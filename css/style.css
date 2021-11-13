@@ -337,4 +337,38 @@ html {
       display: none;
     }
   }
+  
+
+
+  .error input{
+    border:2px red solid!important;
+    background-color: rgb(226, 202, 202);
+  }
+  .success input{
+    border:2px green solid!important;
+  }
+  small{
+    color:red
+  }
+  .valid{
+    display: none;
+  }
+  .invalid {
+    color: red;
+  }
+  #message{
+    display: none;
+  }
+  
+  .progress-bar{
+    border-radius: 5px;
+    height: 8px;
+    font-size: 6px;
+  }
+  
+
+
+
+  .loginform{
+    
   }
