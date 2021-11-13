@@ -210,9 +210,9 @@ pwd.onfocus = function() {
   if (strongRegex.test(pwd.value)) {
       strength.innerHTML = "<small class='progress-bar bg-success' style='width: 100%'>Strong</small>";
   } else if (mediumRegex.test(pwd.value)) {
-      strength.innerHTML = "<small class='progress-bar bg-warning' style='width: 70%'>Medium</small>";
+      strength.innerHTML = "<small class='progress-bar bg-warning' style='width: 66%'>Medium</small>";
   } else {
-      strength.innerHTML = "<small class='progress-bar bg-danger' style='width: 40%'>Weak</small>";
+      strength.innerHTML = "<small class='progress-bar bg-danger' style='width: 33%'>Weak</small>";
   }
   lower();
   upper();
