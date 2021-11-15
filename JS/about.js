@@ -57,20 +57,34 @@ function changef() {
 
   text.style.textTransform = "capitalize"
   showSuccess(fname)
+  var username = document.getElementById("fname").value;
+  var letters = /^[A-Za-z\s]+$/;
+      if(!username.match(letters))
+      {
+    showError(fname, "*Enter valid name")
+    return false;
+  }
+  else {
+    showSuccess(fname);
+  
+    return true;
+  }
 }
+
 
 
 function changest() {
   var text = document.getElementById("state");
 
   text.style.textTransform = "capitalize"
-  
+
 }
 function changepv() {
   var text = document.getElementById("pv");
 
   text.style.textTransform = "capitalize"
-  
+
+
 }
 
 function checkname() {
@@ -173,12 +187,12 @@ function mailval() {
 function numval() {
   var pnum = document.getElementById("inputNumber").value;
   let regex = /^([0-9]{3})([-\s\.])?([0-9]{3})([-\s\.])?([0-9]{4,6})$/
-  let regex1=/^([0-9]{10})$/
-  let regex2=/^([0-9]{3})-([0-9]{3})-([0-9]{4})$/
-  let regex3=/^([0-9]{3})\.([0-9]{3})\.([0-9]{4})$/
-  let regex4=/^([0-9]{3})\s([0-9]{3})\s([0-9]{4})$/
-  
-  if (regex1.test(pnum)||regex2.test(pnum)||regex3.test(pnum)||regex4.test(pnum)) {
+  let regex1 = /^([0-9]{10})$/
+  let regex2 = /^([0-9]{3})-([0-9]{3})-([0-9]{4})$/
+  let regex3 = /^([0-9]{3})\.([0-9]{3})\.([0-9]{4})$/
+  let regex4 = /^([0-9]{3})\s([0-9]{3})\s([0-9]{4})$/
+
+  if (regex1.test(pnum) || regex2.test(pnum) || regex3.test(pnum) || regex4.test(pnum)) {
     showSuccess(inputNumber)
     return true
   }
@@ -195,24 +209,24 @@ function passwordChanged() {
   var enoughRegex = new RegExp("(?=.{8,}).*", "g");
   var pwd = document.getElementById("pwd1");
   // var myInput = document.getElementById("pwd1");
-var letter = document.getElementById("letter");
-var capital = document.getElementById("capital");
-var number = document.getElementById("number");
-var length = document.getElementById("length");
-document.getElementById("message").style.display = "block";
-pwd.onfocus = function() {
+  var letter = document.getElementById("letter");
+  var capital = document.getElementById("capital");
+  var number = document.getElementById("number");
+  var length = document.getElementById("length");
   document.getElementById("message").style.display = "block";
-}
+  pwd.onfocus = function () {
+    document.getElementById("message").style.display = "block";
+  }
   // if (pwd.value.length == 0) {
   //     strength.innerHTML = 'Type Password';
   // } else if (false == enoughRegex.test(pwd.value)) {
   //     strength.innerHTML = 'More Characters';
   if (strongRegex.test(pwd.value)) {
-      strength.innerHTML = "<small class='progress-bar bg-success' style='width: 100%'>Strong</small>";
+    strength.innerHTML = "<small class='progress-bar bg-success' style='width: 100%'>Strong</small>";
   } else if (mediumRegex.test(pwd.value)) {
-      strength.innerHTML = "<small class='progress-bar bg-warning' style='width: 66%'>Medium</small>";
+    strength.innerHTML = "<small class='progress-bar bg-warning' style='width: 66%'>Medium</small>";
   } else {
-      strength.innerHTML = "<small class='progress-bar bg-danger' style='width: 33%'>Weak</small>";
+    strength.innerHTML = "<small class='progress-bar bg-danger' style='width: 33%'>Weak</small>";
   }
   lower();
   upper();
@@ -220,70 +234,70 @@ pwd.onfocus = function() {
   numb();
 
 
-function lower(){
-  var lowerCaseLetters = /[a-z]/g;
-  if(pwd.value.match(lowerCaseLetters)){  
-    letter.classList.remove("invalid");
-    letter.classList.add("valid");
-    return true
-  } else {
-    letter.classList.remove("valid");
-    letter.classList.add("invalid");
-    return false;
+  function lower() {
+    var lowerCaseLetters = /[a-z]/g;
+    if (pwd.value.match(lowerCaseLetters)) {
+      letter.classList.remove("invalid");
+      letter.classList.add("valid");
+      return true
+    } else {
+      letter.classList.remove("valid");
+      letter.classList.add("invalid");
+      return false;
+    }
   }
-}
-  
+
   // Validate capital letters
-  
-  function upper(){
+
+  function upper() {
     var upperCaseLetters = /[A-Z]/g;
-  if(pwd.value.match(upperCaseLetters)) {  
-    capital.classList.remove("invalid");
-    capital.classList.add("valid");
-    return true;
-  } else {
-    capital.classList.remove("valid");
-    capital.classList.add("invalid");
-    return false;
+    if (pwd.value.match(upperCaseLetters)) {
+      capital.classList.remove("invalid");
+      capital.classList.add("valid");
+      return true;
+    } else {
+      capital.classList.remove("valid");
+      capital.classList.add("invalid");
+      return false;
+    }
   }
-}
 
   // Validate numbers
-  
-  function numb(){
+
+  function numb() {
     var numbers = /[0-9]/g;
-  if(pwd.value.match(numbers)) {  
-    
-    number.classList.remove("invalid");
-    number.classList.add("valid");
-    return true;
-  } else {
-    number.classList.remove("valid");
-    number.classList.add("invalid");
-    return false;
+    if (pwd.value.match(numbers)) {
+
+      number.classList.remove("invalid");
+      number.classList.add("valid");
+      return true;
+    } else {
+      number.classList.remove("valid");
+      number.classList.add("invalid");
+      return false;
+    }
   }
-}
-  
+
   // Validate length
-  function leng(){
-  if(pwd.value.length >= 8) {
-    length.classList.remove("invalid");
-    length.classList.add("valid");
-    return true;
-  } else {
-    length.classList.remove("valid");
-    length.classList.add("invalid");
+  function leng() {
+    if (pwd.value.length >= 8) {
+      length.classList.remove("invalid");
+      length.classList.add("valid");
+      return true;
+    } else {
+      length.classList.remove("valid");
+      length.classList.add("invalid");
+      return false;
+    }
+  }
+  if (leng() == false || upper() == false || lower() == false || numb() == false) {
+    showError(pwd1,)
     return false;
   }
-}
-if(leng()==false||upper()==false||lower()==false||numb()==false){
-  showError(pwd1,)
-  return false;
-}
-else{
-  showSuccess(pwd1)
-  return true;
-}
+  else {
+    showSuccess(pwd1)
+    return true;
+  }
 }
 
 
@@ -314,7 +328,7 @@ else{
 //     letter.classList.remove("valid");
 //     letter.classList.add("invalid");
 //   }
-  
+
 //   // Validate capital letters
 //   var upperCaseLetters = /[A-Z]/g;
 //   if(myInput.value.match(upperCaseLetters)) {  
@@ -334,7 +348,7 @@ else{
 //     number.classList.remove("valid");
 //     number.classList.add("invalid");
 //   }
-  
+
 //   // Validate length
 //   if(myInput.value.length >= 8) {
 //     length.classList.remove("invalid");
@@ -348,7 +362,7 @@ else{
 
 
 function validate() {
-  if (checkname() == false || checkmail() == false || checkpwd1() == false || checkpwd2() == false || confirm() == false || mailval() == false || checknum() == false|| numval()==false||passwordChanged()==false ) {
+  if (checkname() == false || checkmail() == false || checkpwd1() == false || checkpwd2() == false || confirm() == false || mailval() == false || checknum() == false || numval() == false || passwordChanged() == false || changef() == false) {
     return false;
   }
   else {
