@@ -58,7 +58,7 @@ function changef() {
   text.style.textTransform = "capitalize"
   showSuccess(fname)
   var username = document.getElementById("fname").value;
-  var letters = /^[A-Za-z\s]+$/;
+  var letters = /^([A-Za-z\s]+)$/;
       if(!username.match(letters))
       {
     showError(fname, "*Enter valid name")
