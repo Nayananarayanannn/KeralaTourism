@@ -363,12 +363,10 @@ html {
   .progress-bar{
     border-radius: 5px;
     height: 8px;
-    font-size: 6px;
+    font-size: 10px;
   }
   
 
 
 
-  .loginform{
-    
-  }
+  
